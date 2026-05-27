@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZOVA — Premium Shopping</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast-container"></div>
+
+<!-- CART DRAWER -->
+<div id="cart-overlay" class="cart-overlay"></div>
+<aside id="cart-drawer" class="cart-drawer">
+  <div class="cart-header">
+    <span class="cart-title">Your Cart</span>
+    <button id="cart-close" class="cart-close" aria-label="Close cart">✕</button>
+  </div>
+  <div id="cart-items" class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cart-total">₹0</span>
+    </div>
+    <button class="btn-checkout">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="#" class="logo">ZO<span>VA</span></a>
+
+    <div class="search-wrap" id="search-wrap">
+      <input type="text" id="search-input" placeholder="Search products, brands…" autocomplete="off"/>
+      <button class="search-btn" id="search-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <div id="search-dropdown" class="search-dropdown hidden"></div>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#categories" class="nav-link" data-filter="all">All</a>
+      <a href="#" class="nav-link" data-filter="electronics">Electronics</a>
+      <a href="#" class="nav-link" data-filter="fashion">Fashion</a>
+      <a href="#" class="nav-link" data-filter="beauty">Beauty</a>
+      <a href="#" class="nav-link" data-filter="home">Home</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn-login">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Login
+      </button>
+      <button class="cart-btn" id="cart-btn" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span id="cart-count" class="cart-count">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#" class="mob-link" data-filter="all">All Products</a>
+  <a href="#" class="mob-link" data-filter="electronics">Electronics</a>
+  <a href="#" class="mob-link" data-filter="fashion">Fashion</a>
+  <a href="#" class="mob-link" data-filter="beauty">Beauty</a>
+  <a href="#" class="mob-link" data-filter="home">Home</a>
+</div>
+
+<!-- HERO CAROUSEL -->
+<section class="hero" id="hero">
+  <div class="hero-track" id="hero-track">
+
+    <div class="hero-slide slide-1">
+      <div class="hero-content">
+        <p class="hero-eyebrow">New Arrival</p>
+        <h1 class="hero-title">Next-Gen<br/><em>Electronics</em></h1>
+        <p class="hero-sub">Up to 40% off on premium gadgets.<br/>Limited time deals.</p>
+        <button class="hero-cta" data-filter="electronics">Shop Electronics</button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=85&auto=format" alt="Electronics"/>
+        </div>
+        <div class="hero-badge">40% OFF</div>
+      </div>
+    </div>
+
+    <div class="hero-slide slide-2">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Trending Now</p>
+        <h1 class="hero-title">Fashion<br/><em>Forward</em></h1>
+        <p class="hero-sub">Curated styles from top designers.<br/>Free delivery on orders above ₹999.</p>
+        <button class="hero-cta" data-filter="fashion">Explore Fashion</button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=85&auto=format" alt="Fashion"/>
+        </div>
+        <div class="hero-badge">Free Ship</div>
+      </div>
+    </div>
+
+    <div class="hero-slide slide-3">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Bestsellers</p>
+        <h1 class="hero-title">Beauty &<br/><em>Wellness</em></h1>
+        <p class="hero-sub">Glow-up season is here.<br/>Premium brands at unreal prices.</p>
+        <button class="hero-cta" data-filter="beauty">Shop Beauty</button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=85&auto=format" alt="Beauty"/>
+        </div>
+        <div class="hero-badge">60% OFF</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero-controls">
+    <button class="hero-prev" id="hero-prev" aria-label="Previous">‹</button>
+    <div class="hero-dots" id="hero-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <button class="hero-next" id="hero-next" aria-label="Next">›</button>
+  </div>
+</section>
+
+<!-- CATEGORY PILLS -->
+<section class="categories-strip" id="categories">
+  <div class="container">
+    <div class="cat-pills">
+      <button class="cat-pill active" data-filter="all">
+        <span class="pill-icon">🛍️</span> All
+      </button>
+      <button class="cat-pill" data-filter="electronics">
+        <span class="pill-icon">📱</span> Electronics
+      </button>
+      <button class="cat-pill" data-filter="fashion">
+        <span class="pill-icon">👗</span> Fashion
+      </button>
+      <button class="cat-pill" data-filter="beauty">
+        <span class="pill-icon">✨</span> Beauty
+      </button>
+      <button class="cat-pill" data-filter="home">
+        <span class="pill-icon">🏠</span> Home
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FLASH SALE -->
+<section class="flash-sale">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title-group">
+        <span class="flash-icon">⚡</span>
+        <h2 class="section-title">Flash Sale</h2>
+      </div>
+      <div class="timer-wrap">
+        <span class="timer-label">Ends in</span>
+        <div class="timer">
+          <div class="timer-block"><span id="t-h">00</span><small>Hrs</small></div>
+          <span class="timer-sep">:</span>
+          <div class="timer-block"><span id="t-m">00</span><small>Min</small></div>
+          <span class="timer-sep">:</span>
+          <div class="timer-block"><span id="t-s">00</span><small>Sec</small></div>
+        </div>
+      </div>
+      <a href="#" class="see-all">See All →</a>
+    </div>
+    <div class="flash-grid" id="flash-grid"></div>
+  </div>
+</section>
+
+<!-- TRENDING PRODUCTS -->
+<section class="products-section" id="products-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title-group">
+        <h2 class="section-title">Trending Products</h2>
+        <span class="section-sub">Curated picks for you</span>
+      </div>
+      <div class="sort-wrap">
+        <select id="sort-select" class="sort-select">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="discount">Best Discount</option>
+        </select>
+      </div>
+    </div>
+    <div class="products-grid" id="products-grid"></div>
+    <div class="no-results hidden" id="no-results">
+      <p>😕 No products found. Try a different search.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER STRIP -->
+<section class="promo-strip">
+  <div class="container">
+    <div class="promo-cards">
+      <div class="promo-card">
+        <span class="promo-icon">🚚</span>
+        <div>
+          <strong>Free Delivery</strong>
+          <p>On orders above ₹999</p>
+        </div>
+      </div>
+      <div class="promo-card">
+        <span class="promo-icon">↩️</span>
+        <div>
+          <strong>Easy Returns</strong>
+          <p>30-day hassle-free return</p>
+        </div>
+      </div>
+      <div class="promo-card">
+        <span class="promo-icon">🔒</span>
+        <div>
+          <strong>Secure Payment</strong>
+          <p>100% secure checkout</p>
+        </div>
+      </div>
+      <div class="promo-card">
+        <span class="promo-icon">🎁</span>
+        <div>
+          <strong>Gift Wrapping</strong>
+          <p>Available on all orders</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo">ZO<span>VA</span></a>
+        <p>Your premium destination for fashion, electronics, beauty & more. Delivering joy, one order at a time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="social-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Electronics</a></li>
+          <li><a href="#">Fashion</a></li>
+          <li><a href="#">Beauty</a></li>
+          <li><a href="#">Home & Living</a></li>
+          <li><a href="#">Offers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Seller Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About ZOVA</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Investors</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ZOVA Commerce Pvt. Ltd. All rights reserved.</p>
+      <div class="payment-badges">
+        <span class="pay-badge">VISA</span>
+        <span class="pay-badge">MC</span>
+        <span class="pay-badge">UPI</span>
+        <span class="pay-badge">PayTM</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
